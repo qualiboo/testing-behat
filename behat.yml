@@ -1,0 +1,85 @@
+default:
+  paths:
+    features: /var/work
+    bootstrap: /var/work/bootstrap
+  extensions:
+      Behat\MinkExtension\Extension:
+        javascript_session:  'selenium2'
+        browser_name: firefox
+        goutte: ~
+  formatter:
+      name: pretty,junit,html
+      parameters:
+        output_path: null,./build,./build/behat.html
+
+firefox:
+  paths:
+    features: /var/work
+    bootstrap: /var/work/bootstrap
+  context:
+    parameters:
+      screenshot_path: ./captures
+  extensions:
+    Behat\MinkExtension\Extension:
+      javascript_session:  'selenium2'
+      browser_name: firefox
+      goutte: ~
+      selenium2:
+        wd_host: "http://hub:4444/wd/hub"
+        capabilities:
+          browser: firefox
+          version: ANY
+          deviceType: ANY
+  formatter:
+    name: pretty,junit,html
+    parameters:
+      output_path: null,./build,./build/behat.html
+
+chrome:
+  paths:
+    features: /var/work
+    bootstrap: /var/work/bootstrap
+  context:
+    parameters:
+      screenshot_path: ./captures
+  extensions:
+    Behat\MinkExtension\Extension:
+      javascript_session:  'selenium2'
+      browser_name: chrome
+      goutte: ~
+      selenium2:
+        wd_host: "http://hub:4444/wd/hub"
+        capabilities:
+          browser: chrome
+          version: ANY
+          deviceType: ANY
+
+  formatter:
+    name: pretty,junit,html
+    parameters:
+      output_path: null,./build,./build/behat.html
+
+
+phantomjs:
+  paths:
+    features: /var/work
+    bootstrap: /var/work/bootstrap
+  context:
+    parameters:
+      screenshot_path: ./captures
+  extensions:
+    Behat\MinkExtension\Extension:
+      javascript_session:  'phantomjs'
+      browser_name: phantomjs
+      goutte: ~
+      selenium2:
+        wd_host: "http://hub:4444/wd/hub"
+        capabilities:
+          browser: chrome
+          version: ANY
+          deviceType: ANY
+
+  formatter:
+    name: pretty,junit,html
+    parameters:
+      output_path: null,./build,./build/behat.html
